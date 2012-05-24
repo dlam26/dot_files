@@ -574,4 +574,5 @@ map <Leader>s :echo synIDattr(synID(line('.'), col('.'), 0), "name")<CR>
 " XXX  for debugging only!
 noremap ,i :so ~/.vim/indent/xquery.vim<CR>
 
-
+" Don't underline <a>links</a> when editing html files
+let html_no_rendering=1
