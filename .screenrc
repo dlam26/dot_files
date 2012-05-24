@@ -1,0 +1,15 @@
+escape ^Zz
+
+defscrollback 15000
+
+caption always "%3n %t%? @%u%?%? [%h]%?%=%c"
+
+screen 0
+screen 1
+screen 2
+screen 3
+
+select 1
+
+# http://www.opensource.apple.com/source/screen/screen-12/screen/nethack.c
+# nethack on
