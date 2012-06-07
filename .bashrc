@@ -43,7 +43,7 @@ alias grep='grep -n'
 alias vi='mvim -v'
 alias vim='mvim -v'
 
-gitshow() { git show $1 | vi - ;}
+gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff $1 | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
 gitlog() { git log --stat | vi - ;}
