@@ -44,9 +44,9 @@ alias vi='mvim -v'
 alias vim='mvim -v'
 
 gitshow() { git show "$1" | vi - ;}
-gitdiff() { git diff $1 | vi - ;}
+gitdiff() { git diff "$1" | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
-gitlog() { git log --stat | vi - ;}
+gitlog() { git log --stat "$1" | vi - ;}
 
 PS1="[\u@\h:\w] $ "
 
