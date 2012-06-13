@@ -331,7 +331,7 @@ let b:comment_leader = '// '   "                            i.e. let the default
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
 au FileType c,cpp,java,javascript let b:comment_leader = '// '
-au FileType sh,make,python let b:comment_leader = '# '
+au FileType sh,make,python,apache let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
 au FileType tex let b:comment_leader = '% '
 
