@@ -42,6 +42,7 @@ alias ls='ls -G'
 alias grep='grep -n'
 alias vi='mvim -v'
 alias vim='mvim -v'
+alias diff='diff -u'
 
 gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff "$1" | vi - ;}
