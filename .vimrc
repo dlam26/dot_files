@@ -331,7 +331,7 @@ let b:comment_leader = '// '   "                            i.e. let the default
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
 au FileType c,cpp,java,javascript let b:comment_leader = '// '
-au FileType sh,make,python,apache let b:comment_leader = '# '
+au FileType sh,make,python,apache,conf let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
 au FileType tex let b:comment_leader = '% '
 
@@ -573,3 +573,13 @@ noremap ,i :so ~/.vim/indent/xquery.vim<CR>
 
 " Don't underline <a>links</a> when editing html files
 let html_no_rendering=1
+
+" Django      https://code.djangoproject.com/wiki/UsingVimWithDjango
+autocmd FileType htmldjango let b:surround_{char2nr("v")} = "{{ \r }}"
+autocmd FileType htmldjango let b:surround_{char2nr("{")} = "{{ \r }}"
+autocmd FileType htmldjango let b:surround_{char2nr("%")} = "{% \r %}"
+autocmd FileType htmldjango let b:surround_{char2nr("b")} = "{% block \1block name: \1 %}\r{% endblock \1\1 %}"
+autocmd FileType htmldjango let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
+autocmd FileType htmldjango let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
+autocmd FileType htmldjango let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
+autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
