@@ -66,6 +66,7 @@ set scrolloff=2
 set wildmenu       " cool ex-mode completion thing
 set splitright
 set splitbelow
+set pastetoggle=<F10>
 
 
 " default statusline is... %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
