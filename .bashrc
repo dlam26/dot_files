@@ -29,6 +29,7 @@ fi
 export EDITOR=vi
 export SVN_EDITOR=vi
 export JAVA_HOME=/usr/java/default
+export DEPLOY_USER=dlam
 
 # http://help.github.com/set-your-user-name-email-and-github-token/
 # export GIT_AUTHOR_NAME="David Lam"
@@ -48,6 +49,13 @@ gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff "$1" | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
 gitlog() { git log --stat "$1" | vi - ;}
+
+# could also use... `grep -r foo .`
+function findrecursive() { find . -type f -exec grep -nH $1 {} \;; }
+function findrecursivel() { find . -type f -exec grep -l $1 {} \;; }
+alias findr='findrecursive'
+alias findrl='findrecursivel'
+
 
 PS1="[\u@\h:\w] $ "
 
