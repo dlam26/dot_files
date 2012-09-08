@@ -18,12 +18,6 @@ fortune | cowsay -W 65 | sed 's/^./        \0/g'
 
 echo ""
 
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
 # User specific aliases and functions
 
 export EDITOR=vi
