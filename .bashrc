@@ -15,7 +15,6 @@ fi
 
 # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
 fortune | cowsay -W 65 | sed 's/^./        \0/g'
-
 echo ""
 
 # User specific aliases and functions
@@ -31,14 +30,23 @@ export DEPLOY_USER=dlam
 # export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 # export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 
-alias xclip='xclip -selection cliboard'
 alias free='free -m'
-alias ls='ls -G'
 alias grep='grep -n'
-alias vi='mvim -v'
-alias vim='mvim -v'
 alias diff='diff -u'
 
+if [[ "$OSTYPE" =~ ^darwin ]]; then 
+    # MacOSX
+    alias vi='mvim -v'   # use MacVim
+    alias vim='mvim -v'
+    alias ls='ls -G'
+else
+    # Fedora 
+    alias vi='vim'
+    alias ls='ls --color'
+    alias xclip='xclip -selection cliboard'   # `pbcopy` on mac
+fi
+
+# git shortcuts
 gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff "$1" | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
