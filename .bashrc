@@ -44,6 +44,7 @@ else
     alias vi='vim'
     alias ls='ls --color'
     alias xclip='xclip -selection cliboard'   # `pbcopy` on mac
+    alias grep='grep -n --color=auto'
 fi
 
 # git shortcuts
