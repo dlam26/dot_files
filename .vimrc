@@ -18,6 +18,10 @@
 
 set nocompatible
 
+if exists('&registerappend')
+    set noregisterappend 
+endif 
+
 syntax on
 color desert
 
@@ -343,9 +347,11 @@ noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>/
 au! BufRead,BufNewFile *.vm  setfiletype velocity 
 
 
-" From...     http://ctags.sourceforge.net/faq.html#15
-" nmap ,t :!(cd %:p:h;ctags *.[ch])&
-:nmap ,t :!(cd %:p:h;ctags *.java)&
+" toggle_words.vim    http://www.vim.org/scripts/script.php?script_id=1676
+
+if exists(':ToggleWord')
+    map ,t :ToggleWord<CR>
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
