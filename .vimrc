@@ -18,6 +18,9 @@
 
 set nocompatible
 
+" http://www.vim.org/scripts/script.php?script_id=2441
+let g:pyflakes_use_quickfix = 0
+
 if exists('&registerappend')
     set noregisterappend 
 endif 
