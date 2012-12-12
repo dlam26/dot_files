@@ -352,7 +352,7 @@ au! BufRead,BufNewFile *.vm  setfiletype velocity
 
 " toggle_words.vim    http://www.vim.org/scripts/script.php?script_id=1676
 
-if exists(':ToggleWord')
+if !exists(':ToggleWord')
     map ,t :ToggleWord<CR>
 endif
 
@@ -593,3 +593,5 @@ autocmd FileType htmldjango let b:surround_{char2nr("i")} = "{% if \1condition: 
 autocmd FileType htmldjango let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
 autocmd FileType htmldjango let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
 autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
+
+au BufRead,BufNewFile *.html set filetype=htmldjango

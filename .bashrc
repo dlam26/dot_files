@@ -61,6 +61,8 @@ function findrecursivel() { find . -type f -exec grep -l $1 {} \;; }
 alias findr='findrecursive'
 alias findrl='findrecursivel'
 
+function dieallpycfiles() { find . -name "*.pyc" -exec rm -rf {} \;; }
+
 
 PS1="[\u@\h:\w] $ "
 
