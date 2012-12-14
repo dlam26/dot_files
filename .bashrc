@@ -63,6 +63,10 @@ alias findrl='findrecursivel'
 
 function dieallpycfiles() { find . -name "*.pyc" -exec rm -rf {} \;; }
 
+# `date` in PST always, useful if on SSH'ed on a server that's using UTC!
+function datepst { export TZ=America/Los_Angeles; date; unset TZ ;}
+
+
 
 PS1="[\u@\h:\w] $ "
 
