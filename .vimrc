@@ -207,9 +207,6 @@ au BufEnter *.java setlocal cindent
 
 autocmd FileType sh runtime macros/shellmenu.vim
 
-" From  *30.6*    Formatting comments
-" au FileType xquery set comments=s1:(:mb::,ex:)
-
 " If running GVim on X11...
 if has("gui_running") && has("unix")
      "set guifont=Andale\ Mono\ 9
@@ -249,9 +246,6 @@ imap <C-y> <C-o><C-y>
 map <F2> :w<CR>
 map \<F2> :wa<CR>
 imap <F2> <C-o>:w<CR>
-
-map gr :so ~/.vim/indent/xquery.vim<CR>:echo "Reloaded xquery indent plugin!"<CR>
-
 
 "closing windows on accident  - wtf why cant i unmap these
 "  ohh... its cuz they're builtins and not mappings
@@ -310,16 +304,6 @@ let Tlist_WinWidth = 23
 let Tlist_Inc_Winwidth = 0
 "let Tlist_Use_SingleClick = 1
 let Tlist_Exit_OnlyWindow = 1
-
-
-" :h matchit-extend     or... 
-"
-" http://vim-taglist.sourceforge.net/extend.html
-"
-"    Also, try 'ctags --list-kinds=all'   to see all the params for different
-"    languages that you can pass in to this variable!
-"
-" let tlist_xquery_settings = 'xquery;v:variable;f:function'
 
 " toggle buffer with f11 instead of Ctrl-6
 map <F11> <c-6>
@@ -578,8 +562,6 @@ au BufReadCmd *.jar,*.xpi,*.xlsx,*.docx call zip#Browse(expand("<amatch>"))
 " :h synID()  echoes the name of the syntax item under the cursor
 map <Leader>s :echo synIDattr(synID(line('.'), col('.'), 0), "name")<CR>
 
-" XXX  for debugging only!
-noremap ,i :so ~/.vim/indent/xquery.vim<CR>
 
 " Don't underline <a>links</a> when editing html files
 let html_no_rendering=1
