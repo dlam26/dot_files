@@ -578,6 +578,8 @@ autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% e
 
 au BufRead,BufNewFile *.html set filetype=htmldjango
 
+au FileType gitcommit :DiffGitCached
+
 "  http://vim.wikia.com/wiki/Remove_unwanted_spaces
 "autocmd BufWritePre *.py :%s/\s\+$//e
 autocmd BufWritePre * :%s/\s\+$//e
