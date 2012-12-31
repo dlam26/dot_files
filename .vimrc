@@ -22,8 +22,8 @@ set nocompatible
 let g:pyflakes_use_quickfix = 0
 
 if exists('&registerappend')
-    set noregisterappend 
-endif 
+    set noregisterappend
+endif
 
 syntax on
 color desert
@@ -31,7 +31,7 @@ color desert
 filetype plugin on
 filetype indent on
 
-" :h macvim  
+" :h macvim
 if has("gui_macvim")
     set macmeta
 endif
@@ -63,13 +63,13 @@ set ruler
 set autoindent                    " always set autoindenting on!
 set hlsearch
 set incsearch
-set ignorecase                    
-set smartcase  
+set ignorecase
+set smartcase
 set backspace=indent,eol,start    " from vimrc_example.vim
 set showcmd		                  " from vimrc_example.vim
 set hidden         " Leave buffer without saving it
 set nostartofline  " Avoid moving the cursor when moving around  9/2/2010
-set scrolloff=2 
+set scrolloff=2
 set wildmenu       " cool ex-mode completion thing
 set splitright
 set splitbelow
@@ -84,18 +84,18 @@ set statusline=%<%f\ [%{Tlist_Get_Tagname_By_Line()}]\ %h%m%r%=%-14.(%l,%c%V%)\ 
 set guitablabel="%t%m"   " :h statusline
 
 " http://vim.wikia.com/wiki/Hide_toolbar/scrollbar_and_toggle_menu
-set guioptions-=T   " No more toolbar 
+set guioptions-=T   " No more toolbar
 set guioptions-=r   " No more right scrollbar
 set guioptions-=l   " No more left scrollbar
-set guioptions-=L  
+set guioptions-=L
 set guioptions-=b   " No more bottom scrollbar
 set guioptions-=e   " default to text tab bar
 
-"  Automatically insert comment thing in comment block: 
+"  Automatically insert comment thing in comment block:
 "     :h fo-table  &  :h format-comments and just above :h auto-format
 set formatoptions=croq
 
-" How to build cscope database: 
+" How to build cscope database:
 "
 "       !find . -name '*.java' > cscope.files
 "       :cscope -b
@@ -163,19 +163,19 @@ endif
 
 
 " Don't switch to the tab if the file is open already when using BufExplorer
- let g:bufExplorerFindActive=0   
+let g:bufExplorerFindActive=0
 " When you hit \bv to open a BufExplorer window in a veritcal split, put the
 " new BufExplorer to the right instead of the left
 let g:bufExplorerSplitRight=1
-let g:bufExplorerSplitBelow=1 
+let g:bufExplorerSplitBelow=1
 
 " seem to always hold down shift for 0.1s too long when entering Ex via :
 cabbrev Bd bd
 cabbrev Bd! bd!
 cabbrev Cd cd
-cabbrev B b 
-cabbrev E e 
-cabbrev Q q 
+cabbrev B b
+cabbrev E e
+cabbrev Q q
 cabbrev Echo echo
 cabbrev Edit edit
 cabbrev Reg reg
@@ -213,8 +213,8 @@ if has("gui_running") && has("unix")
      "set guifont=Liberation\ Mono\ 9
 endif
 
-"switch tabs in insert mode like macosx in GVIM   
-"  <M-S-]> = ý 
+"switch tabs in insert mode like macosx in GVIM
+"  <M-S-]> = ý
 "  <M-S-[> = û
 imap ý <C-o>:tabnext<CR>
 imap û <C-o>:tabprevious<CR>
@@ -260,7 +260,7 @@ map <F1> <Esc>
 imap <F1> <Esc>
 map K :echo<CR>
 
-" scroll other window 
+" scroll other window
 
 nmap <C-M-f> <C-w>w<C-f><C-w>W
 nmap <C-M-b> <C-w>w<C-b><C-w>W
@@ -307,14 +307,14 @@ let Tlist_Exit_OnlyWindow = 1
 
 " toggle buffer with f11 instead of Ctrl-6
 map <F11> <c-6>
-imap <F11> <C-o><F11> 
+imap <F11> <C-o><F11>
 
 " Switch buffers like emacs etc. etc.
 noremap <C-S-left>  :bprev <CR>
 noremap <C-S-right> :bnext <CR>
 
 
-" 4/26/09  comment-region in Vim... 
+" 4/26/09  comment-region in Vim...
 "          from http://vim.wikia.com/wiki/Comment/UnComment_visually_selected_text
 " ,c comments out a region
 " ,u uncomments a region
@@ -331,7 +331,7 @@ noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:noh<CR>
 
 " http://www.vim.org/scripts/script.php?script_id=541
-au! BufRead,BufNewFile *.vm  setfiletype velocity 
+au! BufRead,BufNewFile *.vm  setfiletype velocity
 
 
 " toggle_words.vim    http://www.vim.org/scripts/script.php?script_id=1676
@@ -362,7 +362,7 @@ endif
 "          before the cursor is a space?
 "
 "  <jamessan> lamdk, getline('.')[col('.')-2] should give you the
-"             character before the cursor. may break with 
+"             character before the cursor. may break with
 "             multi-byte characters
 "
 " <godlygeek> lamdk: :echo matchstr(getline('.'), '\%' . (col('.')-1)
@@ -373,9 +373,9 @@ endif
 "
 function! SuperCleverTab()
     "check if at beginning of line or after a space
-    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'  
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
         return "\<Tab>"
-    elseif getline('.')[col('.')-2] =~ '\s'  
+    elseif getline('.')[col('.')-2] =~ '\s'
         " PATCH: cuz above don't check if point is after a space...
         return "\<Tab>"
     else
@@ -420,7 +420,7 @@ function! EasyVimGrep(...)
   call inputrestore()
 
   " http://markmail.org/message/u3kb7qu62ifvopht
-   if(empty(q)) | return | endif 
+   if(empty(q)) | return | endif
 
   ":vimgrep /q/ **/*
   :execute "vimgrep /" . q . "/ **/*" . path
@@ -428,7 +428,7 @@ function! EasyVimGrep(...)
 endfunction
 
 
-function! ToggleCursorColumn() 
+function! ToggleCursorColumn()
     if &cursorcolumn == 0
         set cursorcolumn
     else
@@ -440,14 +440,14 @@ endfunction
 """"""""""""""""""""""""END OF VIM FUNCTIONS!"""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Mapping the functions above... 
+" Mapping the functions above...
 
 inoremap <Tab> <C-R>=SuperCleverTab()<CR>
 nmap <silent> \` :QFix<CR>
 
-map <M-v> :call EasyVimGrep()<CR> 
+map <M-v> :call EasyVimGrep()<CR>
 map <F6> :call EasyVimGrep() <CR>
-map <M-S-v> :call EasyVimGrep('.xqy')<CR> 
+map <M-S-v> :call EasyVimGrep('.xqy')<CR>
 
 map <F7> :call ToggleCursorColumn()<CR>
 
@@ -465,17 +465,17 @@ imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
 """"""""""""""""""""""""" START EMACS KEYS """"""""""""""""""""""""""
 
 " 5/27/09
-" Disable meta/alt from selecting menubars and Emacs keys 
+" Disable meta/alt from selecting menubars and Emacs keys
 "
 "  NOTE:  How to see what a keyboard combination sends to Vim?
 "           1. Go into Ex :
 "           2. push ^V
-"           3. Type the key combo, and it'll show at the bottm 
-"           
+"           3. Type the key combo, and it'll show at the bottm
+"
 "   also see :help map-special-keys
-        
+
 " Dont let alt select menu bar stuff
-set winaltkeys=no 
+set winaltkeys=no
 
 map <M-a> <home>
 map <M-e> <end>
@@ -517,7 +517,7 @@ nmap <C-_> u
 nmap <M-o> O
 "nmap <M-[> <C-r>
 
-" Emacs like tab 
+" Emacs like tab
 nmap <S-Tab> ==
 imap <S-Tab> <C-o>==
 
@@ -542,13 +542,13 @@ nnoremap <Leader>C ciw<C-r>=substitute(@", '_\(\w\)', '\u\1', 'g')<CR><Esc>bgUl
 
 
 "  http://vim.wikia.com/wiki/VimTip349   'Format your xml document using xmllint'  (in package libxml2)
-"  
+"
 "         11/10/2010
 "         <lamdk> hmm i have a XML file where all its elements are on one line,
 "                 is there an editor plugin or something that will format it
 "                 nice?
-"         <_rane> good question  
-"         <jamessan> :s/>/&\r/g | normal! gg=G 
+"         <_rane> good question
+"         <jamessan> :s/>/&\r/g | normal! gg=G
 "         <lamdk> lol whoa pretty cool
 "
 " one or more lines:
@@ -556,7 +556,7 @@ vmap ,px !xmllint --format -<CR>
 " pretty-print current line
 nmap ,px !!xmllint --format -<CR>
 
-" :h zip-extension   
+" :h zip-extension
 au BufReadCmd *.jar,*.xpi,*.xlsx,*.docx call zip#Browse(expand("<amatch>"))
 
 " :h synID()  echoes the name of the syntax item under the cursor
@@ -577,3 +577,7 @@ autocmd FileType htmldjango let b:surround_{char2nr("f")} = "{% for \1for loop: 
 autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
 
 au BufRead,BufNewFile *.html set filetype=htmldjango
+
+"  http://vim.wikia.com/wiki/Remove_unwanted_spaces
+"autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
