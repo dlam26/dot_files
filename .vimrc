@@ -580,6 +580,11 @@ au BufRead,BufNewFile *.html set filetype=htmldjango
 
 au FileType gitcommit :DiffGitCached
 
-"  http://vim.wikia.com/wiki/Remove_unwanted_spaces
+""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
+""  http://vim.wikia.com/wiki/Remove_unwanted_spaces
 "autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
+
+" Show trailing whitespace and spaces before a tab:
+highlight ExtraWhitespace ctermbg=darkyellow guibg=darkyellow
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/

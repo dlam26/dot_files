@@ -3,3 +3,7 @@
 [alias]
 # http://stackoverflow.com/questions/1312633/examining-a-changeset-in-hg
 show = log -pr
+
+[ui]
+verbose=True
+username="David Lam <d@dlam.me>"
