@@ -588,3 +588,6 @@ au FileType gitcommit :DiffGitCached
 " Show trailing whitespace and spaces before a tab:
 highlight ExtraWhitespace ctermbg=darkyellow guibg=darkyellow
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+" gf looks for files in templates folder too (e.g. ma Django projecs)
+set path+=templates
