@@ -77,8 +77,9 @@ set pastetoggle=<F10>
 
 
 " default statusline is... %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-" FIXME include this only if taglist.vim is installed
-set statusline=%<%f\ [%{Tlist_Get_Tagname_By_Line()}]\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+if exists(':Tlist')
+    set statusline=%<%f\ [%{Tlist_Get_Tagname_By_Line()}]\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+endif
 
 " Set filename in tab always... need this in MacVim:   http://markmail.org/thread/4hryqbqc26kzzo7s
 set guitablabel="%t%m"   " :h statusline
