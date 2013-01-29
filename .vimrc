@@ -576,6 +576,7 @@ autocmd FileType htmldjango let b:surround_{char2nr("i")} = "{% if \1condition: 
 autocmd FileType htmldjango let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
 autocmd FileType htmldjango let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
 autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
+autocmd FileType htmldjango set indentkeys-=*<Return>
 
 au BufRead,BufNewFile *.html set filetype=htmldjango
 
