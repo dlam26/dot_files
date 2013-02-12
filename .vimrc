@@ -314,33 +314,28 @@ imap <F11> <C-o><F11>
 noremap <C-S-left>  :bprev <CR>
 noremap <C-S-right> :bnext <CR>
 
-
 " 4/26/09  comment-region in Vim...
 "          from http://vim.wikia.com/wiki/Comment/UnComment_visually_selected_text
 " ,c comments out a region
 " ,u uncomments a region
-
-let b:comment_leader = '// '   "                            i.e. let the default be a //
+"
+let b:comment_leader = '// '
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
 au FileType c,cpp,java,javascript let b:comment_leader = '// '
 au FileType sh,make,python,apache,conf let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
-au FileType tex let b:comment_leader = '% '
-
+au FileType rst let b:comment_leader = '.. '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:noh<CR>
 
 " http://www.vim.org/scripts/script.php?script_id=541
 au! BufRead,BufNewFile *.vm  setfiletype velocity
 
-
 " toggle_words.vim    http://www.vim.org/scripts/script.php?script_id=1676
-
 if !exists(':ToggleWord')
     map ,t :ToggleWord<CR>
 endif
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""  START OF VIM FUNCTIONS!"""""""""""""""""""""""""""
