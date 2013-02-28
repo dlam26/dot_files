@@ -1,5 +1,4 @@
 # .bashrc
-
 # TODO  checkout `htop`
 
 # Source global definitions
@@ -7,19 +6,8 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific aliases and functions
-
-#  print a funny message ^_^ ,  and center it on screen...  
-#   
-#       > yum install fortune
-#       > yum install cowsay
-#
-
-# fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
-fortune | cowsay -W 65 | sed 's/^./        \0/g'
-echo ""
-
-# User specific aliases and functions
+PS1="[\u@\h:\w] $ "
+PATH=$PATH:/usr/local/mysql/bin
 
 export EDITOR=vi
 export SVN_EDITOR=vi
@@ -67,13 +55,21 @@ function dieallpycfiles() { find . -name "*.pyc" -exec rm -rf {} \;; }
 function datepst { export TZ=America/Los_Angeles; date; unset TZ ;}
 
 
-
-PS1="[\u@\h:\w] $ "
-
-
 # alias screen=~/src/screen/src/screen
 
 alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
 
-PATH=$PATH:/usr/local/mysql/bin
 
+#  print a funny message ^_^ ,  and center it on screen...  
+#   
+#       > yum install fortune
+#       > yum install cowsay
+#
+#  http://stackoverflow.com/questions/14495139/how-do-i-check-if-two-specific-programs-exist-on-a-system-in-an-if-conditional
+if type fortune &> /dev/null; then
+    if type cowsay &> /dev/null; then
+        # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
+        fortune | cowsay -W 65 | sed 's/^./        \0/g'
+        echo ""
+    fi
+fi

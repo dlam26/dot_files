@@ -191,6 +191,8 @@ cabbrev Wq wq
 cabbrev Wq! wq!
 cabbrev TExplore Texplore
 cabbrev Vimgrep vimgrep
+cabbrev Vimg vimgrep
+cabbrev Vim vimgrep
 cabbrev H h
 
 " Turn off expandtab when edting makefiles... from http://vim.wikia.com/wiki/Converting_tabs_to_spaces
