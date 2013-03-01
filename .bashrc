@@ -43,6 +43,10 @@ gitdiff() { git diff "$1" | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
 gitlog() { git log --stat "$1" | vi - ;}
 
+hgs() { hg status ;}
+hgdiff() { hg diff "$1" | vi - ;}
+hglog() { hg log | less ;}
+
 # could also use... `grep -r foo .`
 function findrecursive() { find . -type f -exec grep -nH $1 {} \;; }
 function findrecursivel() { find . -type f -exec grep -l $1 {} \;; }

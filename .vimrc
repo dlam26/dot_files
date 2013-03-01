@@ -339,9 +339,9 @@ if !exists(':ToggleWord')
     map ,t :ToggleWord<CR>
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""  START OF VIM FUNCTIONS!"""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""  START OF VIM FUNCTIONS!"""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 " Convenient command to see the difference between the current buffer and the
@@ -396,14 +396,12 @@ endfunction
 
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 if !exists(":QFix")
-    command -bang -nargs=? QFix call QFixToggle(<bang>0)
-
+    command -bang -nargs=? QFix call QFixToggle(<bang>0) 
     function! QFixToggle(forced)
        if exists("g:qfix_win") && a:forced == 0
           cclose
           unlet g:qfix_win
        else
-          " copen 10
           copen 6
           let g:qfix_win = bufnr("$")
        endif
@@ -411,20 +409,21 @@ if !exists(":QFix")
 end
 
 function! EasyVimGrep(...)
-  let path    = (a:0 == 1) ? a:1 : ''    " :h function-argument
   let curline = getline('.')
   call inputsave()
-  let q = input('vimgrep dis: ')
+  let what_to_find = input('vimgrep dis: ')
   call inputrestore()
 
-  " http://markmail.org/message/u3kb7qu62ifvopht
-   if(empty(q)) | return | endif
+  " don't run vimgrep if I hit ESC  
+  " (from http://markmail.org/message/u3kb7qu62ifvopht)
+  if(empty(what_to_find)) | return | endif
 
-  ":vimgrep /q/ **/*
-  :execute "vimgrep /" . q . "/ **/*" . path
-  ":execute "echo \"VimGrepped for... " . q . "\""
+  let patterns = ''
+  for arg in a:000                             "see :h function-argument !
+      let patterns = patterns . ' **/*' . arg
+  endfor
+  :execute 'vimgrep /' . what_to_find . "/ " . patterns
 endfunction
-
 
 function! ToggleCursorColumn()
     if &cursorcolumn == 0
@@ -434,30 +433,20 @@ function! ToggleCursorColumn()
     endif
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""END OF VIM FUNCTIONS!"""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""END OF VIM FUNCTIONS!"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Mapping the functions above...
 
 inoremap <Tab> <C-R>=SuperCleverTab()<CR>
 nmap <silent> \` :QFix<CR>
-
-map <M-v> :call EasyVimGrep()<CR>
-map <F6> :call EasyVimGrep() <CR>
-map <M-S-v> :call EasyVimGrep('.xqy')<CR>
-
-map <F7> :call ToggleCursorColumn()<CR>
-
-
-"  NERDTree function mappin stuff
-"
 map <F5> :execute '  NERDTreeToggle' . expand('%:p:h') <CR>
-"map <F6> :NERDTreeToggle <CR>
 imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
-"imap <F6> <C-o><F6>
-
-
+map <F6> :call EasyVimGrep() <CR>
+map <F7> :call ToggleCursorColumn()<CR>
+map <F8> :call EasyVimGrep('.py')<CR>
+map <F9> :call EasyVimGrep('.html', '.js', '.css')
 
 
 """"""""""""""""""""""""" START EMACS KEYS """"""""""""""""""""""""""
