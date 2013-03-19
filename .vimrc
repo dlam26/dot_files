@@ -446,7 +446,7 @@ imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
 map <F6> :call EasyVimGrep() <CR>
 map <F7> :call ToggleCursorColumn()<CR>
 map <F8> :call EasyVimGrep('.py')<CR>
-map <F9> :call EasyVimGrep('.html', '.js', '.css')
+map <F9> :call EasyVimGrep('.html', '.js', '.css')<CR>
 
 
 """"""""""""""""""""""""" START EMACS KEYS """"""""""""""""""""""""""
