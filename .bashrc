@@ -7,7 +7,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 PS1="[\u@\h:\w] $ "
-PATH=$PATH:/usr/local/mysql/bin
+PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
 
 export EDITOR=vi
 export SVN_EDITOR=vi
@@ -42,6 +42,7 @@ gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff "$1" | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
 gitlog() { git log --stat "$1" | vi - ;}
+gs() { git status ;}
 
 hgs() { hg status ;}
 hgdiff() { hg diff "$1" | vi - ;}
@@ -63,6 +64,9 @@ function datepst { export TZ=America/Los_Angeles; date; unset TZ ;}
 
 alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
 
+alias usd='unset DJANGO_SETTINGS_MODULE;  echo "...unset DJANGO_SETTINGS_MODULE!"'
+alias td='tail -f /tmp/django.log'
+
 
 #  print a funny message ^_^ ,  and center it on screen...  
 #   
@@ -77,3 +81,5 @@ if type fortune &> /dev/null; then
         echo ""
     fi
 fi
+
+alias v='vagrant'

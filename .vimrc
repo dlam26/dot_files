@@ -329,7 +329,7 @@ let b:comment_leader = '// '
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
 au FileType c,cpp,java,javascript let b:comment_leader = '// '
-au FileType sh,make,python,apache,conf let b:comment_leader = '# '
+au FileType sh,make,python,apache,conf,nginx,yaml,sls let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
 au FileType rst let b:comment_leader = '.. '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
@@ -567,9 +567,8 @@ autocmd FileType htmldjango let b:surround_{char2nr("w")} = "{% with \1with: \1 
 autocmd FileType htmldjango let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
 autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
 autocmd FileType htmldjango set indentkeys-=*<Return>
-
 au BufRead,BufNewFile *.html set filetype=htmldjango
-
+au BufRead,BufNewFile Vagrantfile set filetype=conf
 au FileType gitcommit :DiffGitCached
 
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
