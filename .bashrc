@@ -43,6 +43,7 @@ gitdiff() { git diff "$1" | vi - ;}
 gitblame() { git blame $1 $2 | vi - ;}
 gitlog() { git log --stat "$1" | vi - ;}
 gs() { git status ;}
+gl() { gitlog ;}
 
 hgs() { hg status ;}
 hgdiff() { hg diff "$1" | vi - ;}
