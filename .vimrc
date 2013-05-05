@@ -553,7 +553,6 @@ au BufReadCmd *.jar,*.xpi,*.xlsx,*.docx call zip#Browse(expand("<amatch>"))
 " :h synID()  echoes the name of the syntax item under the cursor
 map <Leader>s :echo synIDattr(synID(line('.'), col('.'), 0), "name")<CR>
 
-
 " Don't underline <a>links</a> when editing html files
 let html_no_rendering=1
 
@@ -567,9 +566,12 @@ autocmd FileType htmldjango let b:surround_{char2nr("w")} = "{% with \1with: \1 
 autocmd FileType htmldjango let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
 autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
 autocmd FileType htmldjango set indentkeys-=*<Return>
-au BufRead,BufNewFile *.html set filetype=htmldjango
-au BufRead,BufNewFile Vagrantfile set filetype=conf
-au FileType gitcommit :DiffGitCached
+
+
+" Other filetype autocmd's 
+autocmd BufRead,BufNewFile *.html set filetype=htmldjango
+autocmd BufRead,BufNewFile Vagrantfile set filetype=conf
+autocmd FileType gitcommit :DiffGitCached
 
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
 ""  http://vim.wikia.com/wiki/Remove_unwanted_spaces

@@ -46,16 +46,15 @@ else
 fi
 
 # git shortcuts
-#gitshow() { git show "$1" | vi - ;}
 alias gitshow='git show "$1" | vi -'
-alias gitdiff='git diff "$1" | vi -'
+# alias gitdiff='git diff "$1" | vi -'
+gitdiff() { git diff "$1" | vi - ;}
+alias gd=gitdiff
 alias gdc='git diff --cached "$1" | vi -'
 alias gitlog='git log --stat "$1"'
 alias gl=gitlog
 alias gs='git status'
 alias ga='git annotate'
-alias gd='git diff'
-alias gdc='git diff --cached'
 
 # mercurial shortcuts
 hgs() { hg status ;}
