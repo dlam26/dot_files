@@ -25,8 +25,7 @@ PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
 
 export EDITOR=vi
 export SVN_EDITOR=vi
-export JAVA_HOME=/usr/java/default
-export DEPLOY_USER=dlam
+# export DEPLOY_USER=dlam     # fabric?
 
 alias free='free -m'
 alias grep='grep -n'
@@ -45,16 +44,18 @@ else
     alias grep='grep -n --color=auto'
 fi
 
-# git shortcuts
-alias gitshow='git show "$1" | vi -'
+### git shortcuts
+# alias gitshow='git show "$1" | vi -'
+gitshow() { git show "$1" | vi - ;}
 # alias gitdiff='git diff "$1" | vi -'
 gitdiff() { git diff "$1" | vi - ;}
+alias gca='git commit --amend'
 alias gd=gitdiff
 alias gdc='git diff --cached "$1" | vi -'
 alias gitlog='git log --stat "$1"'
 alias gl=gitlog
 alias gs='git status'
-alias ga='git annotate'
+alias ga='git add -v'
 
 # mercurial shortcuts
 hgs() { hg status ;}
@@ -80,4 +81,3 @@ alias td='tail -f /tmp/django.log'
 alias v='vagrant'
 alias vs='vagrant status'
 alias vu='vagrant up'
-alias vd='vagrant destroy'
