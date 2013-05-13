@@ -16,6 +16,8 @@ if type fortune &> /dev/null; then
         # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
         fortune | cowsay -W 65 | sed 's/^./        \0/g'
         echo ""
+        echo "  REMINDER: use fugitive.vim  http://www.vim.org/scripts/script.php?script_id=2975"
+        echo ""
     fi
 fi
 
@@ -54,8 +56,14 @@ alias gd=gitdiff
 alias gdc='git diff --cached "$1" | vi -'
 alias gitlog='git log --stat "$1"'
 alias gl=gitlog
+alias gls=gitlog
 alias gs='git status'
 alias ga='git add -v'
+alias gb='git blame'
+alias gw='git show'
+alias g='git'
+
+alias topmem='top -o -RSIZE'    # top sorted by memory usage
 
 # mercurial shortcuts
 hgs() { hg status ;}

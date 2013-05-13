@@ -1,0 +1,80 @@
+diff -r 4cb1f10316ca -r aedf9e836670 runtime/doc/change.txt
+--- a/runtime/doc/change.txt	Thu Oct 11 04:44:33 2012 +0200
++++ b/runtime/doc/change.txt	Tue Oct 16 01:28:47 2012 -0700
+@@ -1121,7 +1121,9 @@ 4. Named registers "a to "z or "A to "Z	
+ Vim fills these registers only when you say so.  Specify them as lowercase
+ letters to replace their previous contents or as uppercase letters to append
+ to their previous contents.  When the '>' flag is present in 'cpoptions' then
+-a line break is inserted before the appended text.
++a line break is inserted before the appended text.  To disable appending
++altogether, set 'noregisterappend' to have uppercase letters behave the same
++as lowercase.
+ 
+ 5. Read-only registers ":, "., "% and "#
+ These are '%', '#', ':' and '.'.  You can use them only with the "p", "P",
+diff -r 4cb1f10316ca -r aedf9e836670 runtime/doc/options.txt
+--- a/runtime/doc/options.txt	Thu Oct 11 04:44:33 2012 +0200
++++ b/runtime/doc/options.txt	Tue Oct 16 01:28:47 2012 -0700
+@@ -5492,6 +5492,14 @@ A jump table for the options with a shor
+ 	matches will be highlighted.  This is used to avoid that Vim hangs
+ 	when using a very complicated pattern.
+ 
++						*'registerappend'*
++'registerappend'        boolean (default on)
++			global
++	When set, using a named register with an uppercase letter will append
++	to their previous contents.  Turning off this option could be useful
++	in case you frequently type an uppercase letter on accident when
++	filling a named register.
++
+ 		*'relativenumber'* *'rnu'* *'norelativenumber'* *'nornu'*
+ 'relativenumber' 'rnu'	boolean	(default off)
+ 			local to window
+diff -r 4cb1f10316ca -r aedf9e836670 runtime/doc/quickref.txt
+--- a/runtime/doc/quickref.txt	Thu Oct 11 04:44:33 2012 +0200
++++ b/runtime/doc/quickref.txt	Tue Oct 16 01:28:47 2012 -0700
+@@ -823,6 +823,7 @@ Short explanation of each option:		*opti
+ 'quoteescape'	  'qe'	    escape characters used in a string
+ 'readonly'	  'ro'	    disallow writing the buffer
+ 'redrawtime'	  'rdt'     timeout for 'hlsearch' and |:match| highlighting
++'registerappend' 	    allow append to register with uppercase letter
+ 'relativenumber'  'rnu'	    show relative line number in front of each line
+ 'remap'			    allow mappings to work recursively
+ 'report'		    threshold for reporting nr. of lines changed
+diff -r 4cb1f10316ca -r aedf9e836670 src/ops.c
+--- a/src/ops.c	Thu Oct 11 04:44:33 2012 +0200
++++ b/src/ops.c	Tue Oct 16 01:28:47 2012 -0700
+@@ -894,7 +894,8 @@ get_yank_register(regname, writing)
+     else if (ASCII_ISUPPER(i))
+     {
+ 	i = CharOrdUp(i) + 10;
+-	y_append = TRUE;
++	if(p_regappend)
++	    y_append = TRUE;
+     }
+     else if (regname == '-')
+ 	i = DELETION_REGISTER;
+diff -r 4cb1f10316ca -r aedf9e836670 src/option.c
+--- a/src/option.c	Thu Oct 11 04:44:33 2012 +0200
++++ b/src/option.c	Tue Oct 16 01:28:47 2012 -0700
+@@ -2068,6 +2068,9 @@ static struct vimoption
+ 			    (char_u *)NULL, PV_NONE,
+ #endif
+ 			    {(char_u *)2000L, (char_u *)0L} SCRIPTID_INIT},
++    {"registerappend", NULL,  P_BOOL,
++			    (char_u *)&p_regappend, PV_NONE,
++			    {(char_u *)TRUE, (char_u *)TRUE} SCRIPTID_INIT}, 
+     {"relativenumber", "rnu", P_BOOL|P_VI_DEF|P_RWIN,
+ 			    (char_u *)VAR_WIN, PV_RNU,
+ 			    {(char_u *)FALSE, (char_u *)0L} SCRIPTID_INIT},
+diff -r 4cb1f10316ca -r aedf9e836670 src/option.h
+--- a/src/option.h	Thu Oct 11 04:44:33 2012 +0200
++++ b/src/option.h	Tue Oct 16 01:28:47 2012 -0700
+@@ -495,6 +495,7 @@ EXTERN char_u	*p_popt;	/* 'printoptions'
+ EXTERN char_u	*p_header;	/* 'printheader' */
+ #endif
+ EXTERN int	p_prompt;	/* 'prompt' */
++EXTERN int	p_regappend;	/* 'registerappend' */
+ #ifdef FEAT_GUI
+ EXTERN char_u	*p_guifont;	/* 'guifont' */
+ # ifdef FEAT_XFONTSET

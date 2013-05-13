@@ -338,6 +338,8 @@ noremap <silent> ,u :<C-B>sil <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>/
 " http://www.vim.org/scripts/script.php?script_id=541
 au! BufRead,BufNewFile *.vm  setfiletype velocity
 
+autocmd BufRead,BufNewFile *.less setfiletype css
+
 " toggle_words.vim    http://www.vim.org/scripts/script.php?script_id=1676
 if !exists(':ToggleWord')
     map ,t :ToggleWord<CR>
