@@ -21,13 +21,17 @@ if type fortune &> /dev/null; then
     fi
 fi
 
+echo "  find your public IP:   curl ifconfig.me"
+echo ""
+
 
 PS1="[\u@\h:\w] $ "
 PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
 
 export EDITOR=vi
 export SVN_EDITOR=vi
-# export DEPLOY_USER=dlam     # fabric?
+
+export DEPLOY_USER=dlam     # fabric GR
 
 alias free='free -m'
 alias grep='grep -n'
@@ -58,9 +62,9 @@ alias gitlog='git log --stat "$1"'
 alias gl=gitlog
 alias gls=gitlog
 alias gs='git status'
+alias gsw='git show'
 alias ga='git add -v'
 alias gb='git blame'
-alias gw='git show'
 alias g='git'
 
 alias topmem='top -o -RSIZE'    # top sorted by memory usage
