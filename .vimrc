@@ -262,7 +262,7 @@ noremap <C-S-right> :bnext <CR>
 let b:comment_leader = '// '
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
-au FileType c,cpp,java,javascript let b:comment_leader = '// '
+au FileType c,cpp,java,javascript,go let b:comment_leader = '// '
 au FileType sh,make,python,apache,conf,nginx,yaml,sls let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
 au FileType rst let b:comment_leader = '.. '
@@ -512,7 +512,7 @@ autocmd FileType gitcommit :DiffGitCached
 
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
 ""  http://vim.wikia.com/wiki/Remove_unwanted_spaces
-"autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.py :%s/\s\+$//e
 " autocmd BufWritePre * :%s/\s\+$//e
 
 " Show trailing whitespace and spaces before a tab:

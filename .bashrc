@@ -34,7 +34,7 @@ export SVN_EDITOR=vi
 export DEPLOY_USER=dlam     # fabric GR
 
 alias free='free -m'
-alias grep='grep -n'
+alias grep='grep -n -I --color=auto'
 alias diff='diff -u'
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then 
@@ -47,7 +47,6 @@ else
     alias vi='vim'
     alias ls='ls --color'
     alias xclip='xclip -selection cliboard'   # `pbcopy` on mac
-    alias grep='grep -n --color=auto'
 fi
 
 ### git shortcuts
@@ -55,6 +54,7 @@ fi
 gitshow() { git show "$1" | vi - ;}
 # alias gitdiff='git diff "$1" | vi -'
 gitdiff() { git diff "$1" | vi - ;}
+alias gc='git checkout'
 alias gca='git commit --amend'
 alias gd=gitdiff
 alias gdc='git diff --cached "$1" | vi -'
@@ -93,3 +93,8 @@ alias td='tail -f /tmp/django.log'
 alias v='vagrant'
 alias vs='vagrant status'
 alias vu='vagrant up'
+
+alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
+
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
