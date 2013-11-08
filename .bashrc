@@ -96,5 +96,7 @@ alias vu='vagrant up'
 
 alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
 
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
+# http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
+function external-ip () { lynx --dump http://ipecho.net/plain; }
+ 
+
