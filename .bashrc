@@ -25,7 +25,7 @@ echo "  find your public IP:   curl ifconfig.me"
 echo ""
 
 
-PS1="[\u@\h:\w] $ "
+PS1="[\u@\H:\w] $ "
 PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
 
 export EDITOR=vi
