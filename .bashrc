@@ -15,13 +15,13 @@ if type fortune &> /dev/null; then
     if type cowsay &> /dev/null; then
         # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
         fortune | cowsay -W 65 | sed 's/^./        \0/g'
-        echo ""
-        echo "  REMINDER: use fugitive.vim  http://www.vim.org/scripts/script.php?script_id=2975"
-        echo ""
     fi
 fi
 
+echo ""
 echo "  find your public IP:   curl ifconfig.me"
+echo ""
+echo "  'tree' is the best unix command, it shows a directory in a tree!"
 echo ""
 
 
@@ -31,7 +31,7 @@ PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
 export EDITOR=vi
 export SVN_EDITOR=vi
 
-export DEPLOY_USER=dlam     # fabric GR
+# export DEPLOY_USER=dlam     # fabric GR
 
 alias free='free -m'
 alias grep='grep -n -I --color=auto'
