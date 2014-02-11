@@ -31,8 +31,6 @@ PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
 export EDITOR=vi
 export SVN_EDITOR=vi
 
-# export DEPLOY_USER=dlam     # fabric GR
-
 alias free='free -m'
 alias grep='grep -n -I --color=auto'
 alias diff='diff -u'
