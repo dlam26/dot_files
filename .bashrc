@@ -23,6 +23,9 @@ echo "  find your public IP:   curl ifconfig.me"
 echo ""
 echo "  'tree' is the best unix command, it shows a directory in a tree!"
 echo ""
+echo ""
+echo "    Use bpython!  "
+echo ""
 
 
 PS1="[\u@\H:\w] $ "
