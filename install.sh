@@ -8,4 +8,5 @@ for file in $FILES; do
 done
 
 # update keys file
+mkdir -p ~/.ssh
 cp -v $DOT_FILES/.ssh/authorized_keys ~/.ssh/
