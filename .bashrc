@@ -29,7 +29,7 @@ echo ""
 
 
 PS1="[\u@\H:\w] $ "
-PATH=$PATH:/usr/local/mysql/bin:/Library/PostgreSQL/9.2/bin/
+PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/
 
 export EDITOR=vi
 export SVN_EDITOR=vi
@@ -44,10 +44,11 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     alias vim='mvim -v'
     alias ls='ls -G'
 else
-    # Fedora 
+    # linux
     alias vi='vim'
     alias ls='ls --color'
     alias xclip='xclip -selection cliboard'   # `pbcopy` on mac
+    alias open='gnome-open'
 fi
 
 ### git shortcuts
