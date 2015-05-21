@@ -263,7 +263,7 @@ let b:comment_leader = '// '
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
 au FileType c,cpp,java,javascript,go let b:comment_leader = '// '
-au FileType sh,make,python,apache,conf,sshconfig,nginx,yaml,sls let b:comment_leader = '# '
+au FileType sh,make,python,apache,conf,dosini,sshconfig,nginx,yaml,sls let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
 au FileType rst let b:comment_leader = '.. '
 noremap <silent> ,c :<C-B>sil <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
@@ -386,7 +386,7 @@ imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
 map <F6> :call EasyVimGrep() <CR>
 map <F7> :call ToggleCursorColumn()<CR>
 map <F8> :call EasyVimGrep('.py')<CR>
-map <F9> :call EasyVimGrep('.html', '.js', '.css')<CR>
+map <F9> :call EasyVimGrep('.html', '.js', '.css', '.less', '.py')<CR>
 
 
 """"""""""""""""""""""""" START EMACS KEYS """"""""""""""""""""""""""
@@ -517,7 +517,13 @@ autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Show trailing whitespace and spaces before a tab:
 highlight ExtraWhitespace ctermbg=darkyellow guibg=darkyellow
-autocmd Syntax *.py syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+autocmd Syntax *.py *.js syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " gf looks for files in templates folder too (e.g. ma Django projecs)
 set path+=templates
+
+
+autocmd BufRead,BufNewFile ~/rooster-env/rooster/rooster/*.py set noexpandtab tabstop=4
+autocmd BufRead,BufNewFile ~/rooster-env/rooster/rooster/*.html set expandtab tabstop=4
+
+set guifont=Monospace\ 11
