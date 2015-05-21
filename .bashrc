@@ -91,14 +91,27 @@ alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
 
 alias usd='unset DJANGO_SETTINGS_MODULE;  echo "...unset DJANGO_SETTINGS_MODULE!"'
 alias td='tail -f /tmp/django.log'
+alias psrs='ps -Af | grep runserver'
 
 alias v='vagrant'
 alias vs='vagrant status'
 alias vu='vagrant up'
 
 alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
+alias psr='ps -Af | grep -i runserver'
 
 # http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
 function external-ip () { lynx --dump http://ipecho.net/plain; }
  
 
+
+synclient FingerLow=15      #  touchpad pressure settings
+synclient FingerHigh=32     #  30 was lil too sensitive
+synclient MinSpeed=0.5
+synclient MaxSpeed=2
+# synclient AccelFactor=0.04
+# synclient AccelFactor=0.06    # a lil too fast
+synclient AccelFactor=0.0514403
+
+#  http://askubuntu.com/questions/218233/how-can-i-prevent-my-cursor-from-moving-when-i-am-clicking-the-trackpad/405998#405998
+synclient HorizHysteresis=40 VertHysteresis=40
