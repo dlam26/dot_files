@@ -92,13 +92,12 @@ alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
 alias usd='unset DJANGO_SETTINGS_MODULE;  echo "...unset DJANGO_SETTINGS_MODULE!"'
 alias td='tail -f /tmp/django.log'
 alias psrs='ps -Af | grep runserver'
-
 alias v='vagrant'
 alias vs='vagrant status'
 alias vu='vagrant up'
-
 alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
 alias psr='ps -Af | grep -i runserver'
+alias formatjson='cat $1 | python -m json.tool'
 
 # http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
 function external-ip () { lynx --dump http://ipecho.net/plain; }
