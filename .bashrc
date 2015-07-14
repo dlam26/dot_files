@@ -68,6 +68,7 @@ alias gsw='git show'
 alias ga='git add -v'
 alias gb='git blame'
 alias g='git'
+alias gitlogall='git log --branches --remotes --tags --graph --oneline --decorate'
 
 alias topmem='top -o -RSIZE'    # top sorted by memory usage
 
