@@ -342,7 +342,7 @@ if !exists(":QFix")
           cclose
           unlet g:qfix_win
        else
-          copen 6
+          copen 13
           let g:qfix_win = bufnr("$")
        endif
     endfunction
@@ -386,7 +386,7 @@ imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
 map <F6> :call EasyVimGrep() <CR>
 map <F7> :call ToggleCursorColumn()<CR>
 map <F8> :call EasyVimGrep('.py')<CR>
-map <F9> :call EasyVimGrep('.html', '.js', '.css', '.less', '.py')<CR>
+map <F9> :call EasyVimGrep('.html', '.js', '.css', '*.scss', '.less', '.py', '.hbs')<CR>
 
 
 """"""""""""""""""""""""" START EMACS KEYS """"""""""""""""""""""""""

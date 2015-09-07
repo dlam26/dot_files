@@ -27,7 +27,6 @@ echo ""
 echo "    Use bpython!  "
 echo ""
 
-
 PS1="[\u@\H:\w] $ "
 PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/
 
@@ -36,6 +35,7 @@ export SVN_EDITOR=vi
 
 alias free='free -m'
 alias grep='grep -n -I --color=auto'
+alias gi='grep -i'
 alias diff='diff -u'
 
 if [[ "$OSTYPE" =~ ^darwin ]]; then 
@@ -59,7 +59,9 @@ gitdiff() { git diff "$1" | vi - ;}
 alias gc='git checkout'
 alias gca='git commit --amend'
 alias gd=gitdiff
-alias gdc='git diff --cached "$1" | vi -'
+alias gdv='git diff | vi -'
+alias gdc='git diff --cached "$1"'
+alias gdcv='git diff --cached "$1" | vi -'
 alias gitlog='git log --stat "$1"'
 alias gl=gitlog
 alias gls=gitlog
