@@ -1,12 +1,17 @@
-# TODO  checkout `htop` and `mtop`
+# TODO  checkout...
+#         - `htop`
+#         - `mtop`
+#         - `bpython`
+#         - `tree`
+#
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-#  print a funny message ^_^ ,  and center it on screen...  
-#   
+#  print a funny message ^_^ ,  and center it on screen...
+#
 #       > yum install fortune
 #       > yum install cowsay
 #
@@ -17,28 +22,24 @@ if type fortune &> /dev/null; then
         fortune | cowsay -W 65 | sed 's/^./        \0/g'
     fi
 fi
-
-echo ""
-echo "  find your public IP:   curl ifconfig.me"
-echo ""
-echo "  'tree' is the best unix command, it shows a directory in a tree!"
-echo ""
-echo ""
-echo "    Use bpython!  "
 echo ""
 
 PS1="[\u@\H:\w] $ "
-PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/
+PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/:/home/dlam/jdk1.8.0_77/bin/
+
 
 export EDITOR=vi
 export SVN_EDITOR=vi
+
+# make ~/.bash_history moar readable   http://askubuntu.com/questions/391082/how-to-see-time-stamps-in-bash-history
+export HISTTIMEFORMAT="%d/%m/%y %T "
 
 alias free='free -m'
 alias grep='grep -n -I --color=auto'
 alias gi='grep -i'
 alias diff='diff -u'
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then 
+if [[ "$OSTYPE" =~ ^darwin ]]; then
     # MacOSX
     alias vi='mvim -v'   # use MacVim
     alias vim='mvim -v'
@@ -58,11 +59,11 @@ gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff "$1" | vi - ;}
 alias gc='git checkout'
 alias gca='git commit --amend'
-alias gd=gitdiff
+alias gd='gitdiff .'
 alias gdv='git diff | vi -'
 alias gdc='git diff --cached "$1"'
 alias gdcv='git diff --cached "$1" | vi -'
-alias gitlog='git log --stat "$1"'
+alias gitlog='git log --stat'
 alias gl=gitlog
 alias gls=gitlog
 alias gs='git status'
@@ -101,19 +102,26 @@ alias vu='vagrant up'
 alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
 alias psr='ps -Af | grep -i runserver'
 alias formatjson='cat $1 | python -m json.tool'
+alias sa='source activate'
+alias mr='python manage.py runserver'
+alias rs='python manage.py runserver'
+alias ms='python manage.py shell_plus'
+alias m='python manage.py'
+
+alias tas="tmux attach-session"
 
 # http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
 function external-ip () { lynx --dump http://ipecho.net/plain; }
- 
 
 
-synclient FingerLow=15      #  touchpad pressure settings
-synclient FingerHigh=32     #  30 was lil too sensitive
-synclient MinSpeed=0.5
-synclient MaxSpeed=2
-# synclient AccelFactor=0.04
-# synclient AccelFactor=0.06    # a lil too fast
-synclient AccelFactor=0.0514403
 
-#  http://askubuntu.com/questions/218233/how-can-i-prevent-my-cursor-from-moving-when-i-am-clicking-the-trackpad/405998#405998
-synclient HorizHysteresis=40 VertHysteresis=40
+# synclient FingerLow=15      #  touchpad pressure settings
+# synclient FingerHigh=32     #  30 was lil too sensitive
+# synclient MinSpeed=0.5
+# synclient MaxSpeed=2
+# # synclient AccelFactor=0.04
+# # synclient AccelFactor=0.06    # a lil too fast
+# synclient AccelFactor=0.0514403
+#
+# #  http://askubuntu.com/questions/218233/how-can-i-prevent-my-cursor-from-moving-when-i-am-clicking-the-trackpad/405998#405998
+# synclient HorizHysteresis=40 VertHysteresis=40

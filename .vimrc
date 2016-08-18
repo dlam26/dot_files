@@ -336,7 +336,7 @@ endfunction
 
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 if !exists(":QFix")
-    command -bang -nargs=? QFix call QFixToggle(<bang>0) 
+    command -bang -nargs=? QFix call QFixToggle(<bang>0)
     function! QFixToggle(forced)
        if exists("g:qfix_win") && a:forced == 0
           cclose
@@ -354,7 +354,7 @@ function! EasyVimGrep(...)
   let what_to_find = input('vimgrep dis: ')
   call inputrestore()
 
-  " don't run vimgrep if I hit ESC  
+  " don't run vimgrep if I hit ESC
   " (from http://markmail.org/message/u3kb7qu62ifvopht)
   if(empty(what_to_find)) | return | endif
 
@@ -505,7 +505,7 @@ autocmd FileType sls let b:surround_{char2nr("c")} = "{# \r #}"   " <-- salt sta
 autocmd FileType htmldjango set indentkeys-=*<Return>
 
 
-" Other filetype autocmd's 
+" Other filetype autocmd's
 autocmd BufRead,BufNewFile *.html set filetype=htmldjango
 autocmd BufRead,BufNewFile Vagrantfile set filetype=conf
 autocmd FileType gitcommit :DiffGitCached
@@ -513,7 +513,7 @@ autocmd FileType gitcommit :DiffGitCached
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
 ""  http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre *.py :%s/\s\+$//e
-" autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Show trailing whitespace and spaces before a tab:
 highlight ExtraWhitespace ctermbg=darkyellow guibg=darkyellow
@@ -521,9 +521,5 @@ autocmd Syntax *.py *.js syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " gf looks for files in templates folder too (e.g. ma Django projecs)
 set path+=templates
-
-
-autocmd BufRead,BufNewFile ~/rooster-env/rooster/rooster/*.py set noexpandtab tabstop=4
-autocmd BufRead,BufNewFile ~/rooster-env/rooster/rooster/*.html set expandtab tabstop=4
 
 set guifont=Monospace\ 11
