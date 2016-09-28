@@ -1,0 +1,74 @@
+diff --git a/runtime/doc/change.txt b/runtime/doc/change.txt
+index 51e699b..75c773f 100644
+--- a/runtime/doc/change.txt
++++ b/runtime/doc/change.txt
+@@ -1234,7 +1234,9 @@ except when the command specifies a register with ["x].
+ Vim fills these registers only when you say so.  Specify them as lowercase
+ letters to replace their previous contents or as uppercase letters to append
+ to their previous contents.  When the '>' flag is present in 'cpoptions' then
+-a line break is inserted before the appended text.
++a line break is inserted before the appended text.  To disable appending
++altogether, set 'noregisterappend' to have uppercase letters behave the same
++as lowercase.
+ 
+ 5. Read-only registers ":, ". and "%
+ These are '%', '#', ':' and '.'.  You can use them only with the "p", "P",
+diff --git a/runtime/doc/options.txt b/runtime/doc/options.txt
+index a17e195..7f6b077 100644
+--- a/runtime/doc/options.txt
++++ b/runtime/doc/options.txt
+@@ -5832,6 +5832,14 @@ A jump table for the options with a short description can be found at |Q_op|.
+ 	many states.  This should prevent Vim from hanging on a combination of
+ 	a complex pattern with long text.
+ 
++						*'registerappend'*
++'registerappend'        boolean (default on)
++			global
++	When set, using a named register with an uppercase letter will append
++	to their previous contents.  Turning off this option could be useful
++	in case you frequently type an uppercase letter on accident when
++	filling a named register.
++
+ 		*'relativenumber'* *'rnu'* *'norelativenumber'* *'nornu'*
+ 'relativenumber' 'rnu'	boolean	(default off)
+ 			local to window
+diff --git a/src/ops.c b/src/ops.c
+index 4bef6c5..8b96844 100644
+--- a/src/ops.c
++++ b/src/ops.c
+@@ -911,7 +911,8 @@ get_yank_register(int regname, int writing)
+     else if (ASCII_ISUPPER(i))
+     {
+ 	i = CharOrdUp(i) + 10;
+-	y_append = TRUE;
++	if(p_regappend)
++	    y_append = TRUE;
+     }
+     else if (regname == '-')
+ 	i = DELETION_REGISTER;
+diff --git a/src/option.c b/src/option.c
+index 2d5f3b8..7090402 100644
+--- a/src/option.c
++++ b/src/option.c
+@@ -2165,6 +2165,9 @@ static struct vimoption options[] =
+     {"regexpengine", "re",  P_NUM|P_VI_DEF,
+ 			    (char_u *)&p_re, PV_NONE,
+ 			    {(char_u *)0L, (char_u *)0L} SCRIPTID_INIT},
++    {"registerappend", NULL,  P_BOOL,
++			    (char_u *)&p_regappend, PV_NONE,
++			    {(char_u *)TRUE, (char_u *)TRUE} SCRIPTID_INIT},
+     {"relativenumber", "rnu", P_BOOL|P_VI_DEF|P_RWIN,
+ 			    (char_u *)VAR_WIN, PV_RNU,
+ 			    {(char_u *)FALSE, (char_u *)0L} SCRIPTID_INIT},
+diff --git a/src/option.h b/src/option.h
+index 13acabf..d34cdc3 100644
+--- a/src/option.h
++++ b/src/option.h
+@@ -524,6 +524,7 @@ EXTERN char_u	*p_popt;	/* 'printoptions' */
+ EXTERN char_u	*p_header;	/* 'printheader' */
+ #endif
+ EXTERN int	p_prompt;	/* 'prompt' */
++EXTERN int	p_regappend;	/* 'registerappend' */
+ #ifdef FEAT_GUI
+ EXTERN char_u	*p_guifont;	/* 'guifont' */
+ # ifdef FEAT_XFONTSET
