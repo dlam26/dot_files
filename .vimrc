@@ -19,7 +19,7 @@
 "
 "   http://vim.wikia.com/wiki/Building_Vim
 "
-"     -  ./configure  --with-features=huge  --enable-gui=gtk3 --enable-pythoninterp=yes  --enable-python3interp=yes  --with-compiledby="DAVID L. ^^ "
+"     -  ./configure  --with-features=huge  --enable-gui --enable-pythoninterp=yes  --enable-python3interp=yes  --with-compiledby="DAVID L. ^^ "
 "
 "     -  use 'make distclean'   (instead of 'make clean')
 "
