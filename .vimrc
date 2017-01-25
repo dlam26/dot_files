@@ -492,6 +492,10 @@ vmap ,px !xmllint --format -<CR>
 " pretty-print current line
 nmap ,px !!xmllint --format -<CR>
 
+" https://coderwall.com/p/faceag/format-json-in-vim
+nmap =j :%!python -m json.tool<CR>
+
+
 " :h zip-extension
 au BufReadCmd *.jar,*.xpi,*.xlsx,*.docx call zip#Browse(expand("<amatch>"))
 
