@@ -24,8 +24,14 @@ if type fortune &> /dev/null; then
 fi
 echo ""
 
-PS1="[\u@\H:\w] $ "
-PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/:/home/dlam/jdk1.8.0_77/bin/
+# https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+PS1="[\u@\H:\w]\[\033[33m\]\$(parse_git_branch)\[\033[00m $ "
+
+PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/:/home/dlam/jdk1.8.0_111/bin:/usr/share/elasticsearch/bin/
 
 
 export EDITOR=vi
@@ -107,8 +113,8 @@ alias mr='python manage.py runserver'
 alias rs='python manage.py runserver'
 alias ms='python manage.py shell_plus'
 alias m='python manage.py'
-
 alias tas="tmux attach-session"
+alias fn="find -name "
 
 # http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
 function external-ip () { lynx --dump http://ipecho.net/plain; }
