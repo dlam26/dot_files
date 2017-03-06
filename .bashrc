@@ -20,9 +20,9 @@ if type fortune &> /dev/null; then
     if type cowsay &> /dev/null; then
         # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
         fortune | cowsay -W 65 | sed 's/^./        \0/g'
+        echo ""
     fi
 fi
-echo ""
 
 # https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
 parse_git_branch() {
