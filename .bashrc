@@ -18,9 +18,11 @@ fi
 #  http://stackoverflow.com/questions/14495139/how-do-i-check-if-two-specific-programs-exist-on-a-system-in-an-if-conditional
 if type fortune &> /dev/null; then
     if type cowsay &> /dev/null; then
-        # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
-        fortune | cowsay -W 65 | sed 's/^./        \0/g'
-        echo ""
+        if [ "$HOSTNAME" = "xotic" ]; then
+            # fortune | cowsay -W 70 -f ghostbusters | sed 's/^./            \0/g'
+            fortune | cowsay -W 65 | sed 's/^./        \0/g'
+            echo ""
+        fi
     fi
 fi
 
