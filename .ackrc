@@ -1,0 +1,3 @@
+--ignore-file=match:tags
+--ignore-file=match:rooster.log
+--ignore-file=match:ENTIRE_GIT_LOG
