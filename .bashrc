@@ -77,7 +77,7 @@ alias gls=gitlog
 alias gs='git status'
 alias gsw='git show'
 alias ga='git add -v'
-alias gb='git blame'
+alias gb='git branch'
 alias g='git'
 alias gitlogall='git log --branches --remotes --tags --graph --oneline --decorate'
 
@@ -133,3 +133,10 @@ function external-ip () { lynx --dump http://ipecho.net/plain; }
 #
 # #  http://askubuntu.com/questions/218233/how-can-i-prevent-my-cursor-from-moving-when-i-am-clicking-the-trackpad/405998#405998
 # synclient HorizHysteresis=40 VertHysteresis=40
+
+
+#  from  https://github.com/creationix/nvm ...and this command:
+#  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -132,6 +132,7 @@ cabbrev So so
 cabbrev Tabe tabe
 cabbrev Tabmove tabmove
 cabbrev Ts ts
+cabbrev TS ts
 cabbrev W w
 cabbrev Wa wa
 cabbrev Wq wq
@@ -192,10 +193,6 @@ imap <C-e> <C-o><C-e>
 imap <C-y> <C-o><C-y>
 
 
-"save easier
-map <F2> :w<CR>
-map \<F2> :wa<CR>
-imap <F2> <C-o>:w<CR>
 
 "closing windows on accident  - wtf why cant i unmap these
 "  ohh... its cuz they're builtins and not mappings
@@ -250,7 +247,7 @@ imap <M-Down> <C-o><C-w><Down>
 map <F3> :TlistToggle<CR>
 map <F4> :TlistUpdate<CR>:TlistHighlightTag<CR>
 let Tlist_Use_Right_Window = 0
-let Tlist_WinWidth = 23
+let Tlist_WinWidth = 32
 let Tlist_Inc_Winwidth = 0
 "let Tlist_Use_SingleClick = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -395,7 +392,7 @@ imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
 map <F6> :call EasyVimGrep() <CR>
 map <F7> :call ToggleCursorColumn()<CR>
 map <F8> :call EasyVimGrep('.py')<CR>
-map <F9> :call EasyVimGrep('.html', '.js', '.css', '*.scss', '.less', '.py', '.hbs')<CR>
+map <F9> :call EasyVimGrep('.html', '.js', '.css', '*.scss', '.py', '.hbs')<CR>
 
 
 """"""""""""""""""""""""" START EMACS KEYS """"""""""""""""""""""""""
@@ -525,8 +522,8 @@ autocmd FileType gitcommit :DiffGitCached
 
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
 ""  http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre *.py :%s/\s\+$//e
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre *.py :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 " Show trailing whitespace and spaces before a tab:
 highlight ExtraWhitespace ctermbg=darkyellow guibg=darkyellow
@@ -536,3 +533,5 @@ autocmd Syntax *.py *.js syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 set path+=templates
 
 set guifont=Monospace\ 11
+
+set wildignore=*.pyc,*/node_modules/**,*/angular/lib/**,*.webpack.js

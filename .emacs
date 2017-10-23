@@ -173,9 +173,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (require  'color-theme)
-;; (color-theme-initialize)
-;;  (color-theme-jsc-dark)  ;; 12/2/2008 - "Cooper Dark" in the color scheme test
+(require  'color-theme)
+(color-theme-initialize)
+(color-theme-jsc-dark)  ;; 12/2/2008 - "Cooper Dark" in the color scheme test
 ;; (color-theme-matrix)  
 
 ;;    for COEN 281 omg: 
