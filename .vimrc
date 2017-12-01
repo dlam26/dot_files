@@ -91,7 +91,7 @@ set pastetoggle=<F10>
 "          installed, putting this here makes it not run this statusline at
 "          all!
 "if exists(':Tlist')
-    set statusline=%<%f\ [%{Tlist_Get_Tagname_By_Line()}]\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+    set statusline=%<%f\ [%{Tlist_Get_Tagname_By_Line()}]\ %{fugitive#statusline()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 "endif
 
 " Set filename in tab always... need this in MacVim:   http://markmail.org/thread/4hryqbqc26kzzo7s
@@ -534,4 +534,4 @@ set path+=templates
 
 set guifont=Monospace\ 11
 
-set wildignore=*.pyc,*/node_modules/**,*/angular/lib/**,*.webpack.js
+set wildignore=*.pyc,*/node_modules/**,*/angular/lib/**,*.webpack.js,*/js/libs/**,*/scripts/craigslist_samples/**
