@@ -30,6 +30,9 @@ set nocompatible
 " http://www.vim.org/scripts/script.php?script_id=2441
 let g:pyflakes_use_quickfix = 0
 
+" http://www.vim.org/scripts/script.php?script_id=2332
+execute pathogen#infect() 
+
 if exists('&registerappend')
     set noregisterappend
 endif
@@ -86,13 +89,9 @@ set pastetoggle=<F10>
 
 
 " default statusline is... %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-"
-"   TODO   this exists(':Tlist') does not work to see if taglist.vim is
-"          installed, putting this here makes it not run this statusline at
-"          all!
-"if exists(':Tlist')
-    set statusline=%<%f\ [%{Tlist_Get_Tagname_By_Line()}]\ %{fugitive#statusline()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-"endif
+" https://stackoverflow.com/questions/48200150/
+set statusline=%<%f\ [%{exists('*Tlist_Get_Tagname_By_Line')?Tlist_Get_Tagname_By_Line():''}]\ %{fugitive#statusline()}\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+ 
 
 " Set filename in tab always... need this in MacVim:   http://markmail.org/thread/4hryqbqc26kzzo7s
 set guitablabel="%t%m"   " :h statusline
