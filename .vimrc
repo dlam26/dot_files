@@ -513,11 +513,14 @@ autocmd FileType htmldjango let b:surround_{char2nr("c")} = "{% comment %}\r{% e
 autocmd FileType sls let b:surround_{char2nr("c")} = "{# \r #}"   " <-- salt state files
 autocmd FileType htmldjango set indentkeys-=*<Return>
 
-
 " Other filetype autocmd's
 autocmd BufRead,BufNewFile *.html set filetype=htmldjango
 autocmd BufRead,BufNewFile Vagrantfile set filetype=conf
 autocmd FileType gitcommit :DiffGitCached
+
+" no swap/undo files in the Dropbox folder cuz super annoying
+autocmd BufNewFile,BufRead */Dropbox/* set noundofile noswapfile
+
 
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
 ""  http://vim.wikia.com/wiki/Remove_unwanted_spaces
