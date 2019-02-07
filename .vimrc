@@ -180,10 +180,6 @@ map gb gT
 vmap zy "+ygv"*y
 nmap zp "+p
 
-" :h scroll-smooth
-map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
-
 nmap <space> <C-f>
 nmap <S-space> <C-b>
 
@@ -537,3 +533,8 @@ set path+=templates
 set guifont=Monospace\ 11
 
 set wildignore=*.pyc,*/node_modules/**,*/angular/lib/**,*.webpack.js,*/js/libs/**,*/scripts/craigslist_samples/**
+
+" from https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
