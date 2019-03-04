@@ -412,11 +412,11 @@
 ;;
 ;; from 57.3.2 Hooks in the manual
 
-     (setq my-c-style
+;;   (setq my-c-style
 ;;       '((c-comment-only-line-offset . 4)
 ;;	 (comment-start . ("//"))
 ;;	 (comment-end . (""))
-	 )
+;;	 )
 
      (add-hook 'c-mode-common-hook
        '(lambda ()
