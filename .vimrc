@@ -22,7 +22,9 @@
 "     -  ./configure  --with-features=huge  --enable-gui --enable-pythoninterp=yes  --enable-python3interp=yes  --with-compiledby="DAVID L. ^^ "
 "
 "     -  use 'make distclean'   (instead of 'make clean')
+" 
 "
+" syntax checker thing:  https://github.com/w0rp/ale
 "
 
 set nocompatible
@@ -143,7 +145,7 @@ cabbrev Vim vimgrep
 cabbrev H h
 
 " Turn off expandtab when edting makefiles... from http://vim.wikia.com/wiki/Converting_tabs_to_spaces
-autocmd FileType make setlocal noexpandtab
+autocmd FileType make,cs setlocal noexpandtab
 
 au BufEnter *.java setlocal cindent
 " au BufEnter *.java map ]] ]m
@@ -517,6 +519,8 @@ autocmd FileType gitcommit :DiffGitCached
 " no swap/undo files in the Dropbox folder cuz super annoying
 autocmd BufNewFile,BufRead */Dropbox/* set noundofile noswapfile
 
+autocmd BufNewFile,BufRead */frontend/* set sw=2
+
 
 ""  Automatially remove trailing whitespace... (a little too destructive to diffs though)
 ""  http://vim.wikia.com/wiki/Remove_unwanted_spaces
@@ -538,3 +542,16 @@ set wildignore=*.pyc,*/node_modules/**,*/angular/lib/**,*.webpack.js,*/js/libs/*
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+
+" https://github.com/dense-analysis/ale#faq-disable-linters
+"
+" originally put here because 'jshint' and 'prettier' are way too noisy
+"  
+" To view linter names:  ls ~/.vim/pack/git-plugins/start/ale/ale_linters/
+"
+"
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['flake8'],
+\}

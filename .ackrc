@@ -1,5 +1,5 @@
 --ignore-file=match:app.css
 --ignore-file=match:/^tags$/
 --ignore-file=match:rooster.log
---ignore-file=match:ENTIRE_GIT_LOG
+--ignore-file=match:*ENTIRE_GIT_LOG*
 --ignore-dir=migrations
