@@ -158,6 +158,7 @@ au BufEnter *.java setlocal cindent
 " au BufLeave *.java unmap []
 
 autocmd FileType sh runtime macros/shellmenu.vim
+autocmd FileType javascriptreact setlocal shiftwidth=2
 
 " If running GVim on X11...
 if has("gui_running") && has("unix")
@@ -181,14 +182,13 @@ map Q gq
 map gb gT
 vmap zy "+ygv"*y
 nmap zp "+p
-
+map <C-l> zz
 nmap <space> <C-f>
 nmap <S-space> <C-b>
 
 " also see :h scroll-insert
 imap <C-e> <C-o><C-e>
 imap <C-y> <C-o><C-y>
-
 
 
 "closing windows on accident  - wtf why cant i unmap these
@@ -205,7 +205,6 @@ imap <F1> <Esc>
 map K :echo<CR>
 
 " scroll other window
-
 nmap <C-M-f> <C-w>w<C-f><C-w>W
 nmap <C-M-b> <C-w>w<C-b><C-w>W
 nmap <C-M-e> <C-w>w<C-e><C-w>W
@@ -229,7 +228,7 @@ nmap <silent> \gt :Texplore %:h<CR>
 nmap <silent> \gv :Vexplore %:h<CR>
 nmap <silent> \gh :Hexplore %:h<CR>
 
-" move windows with Alt-arrowkey
+" move windows with Alt-arrow key
 map <M-Left> <C-w><Left>
 map <M-Right> <C-w><Right>
 map <M-Up> <C-w><Up>
@@ -256,6 +255,10 @@ imap <F11> <C-o><F11>
 " Switch buffers like emacs etc. etc.
 noremap <C-S-left>  :bprev <CR>
 noremap <C-S-right> :bnext <CR>
+map <M-Left> :bp<CR>
+map <M-Right> :bn<CR>
+
+
 
 " 4/26/09  comment-region in Vim...
 "          from http://vim.wikia.com/wiki/Comment/UnComment_visually_selected_text
@@ -265,7 +268,7 @@ noremap <C-S-right> :bnext <CR>
 let b:comment_leader = '// '
 au FileType haskell,vhdl,ada let b:comment_leader = '-- '
 au FileType vim let b:comment_leader = '" '
-au FileType c,cpp,java,javascript,go let b:comment_leader = '// '
+au FileType c,cpp,java,javascript,go,typescript let b:comment_leader = '// '
 au FileType sh,make,python,apache,conf,dosini,sshconfig,nginx,yaml,sls let b:comment_leader = '# '
 au FileType velocity let b:comment_leader = '## '
 au FileType rst let b:comment_leader = '.. '
@@ -454,6 +457,18 @@ imap <S-Tab> <C-o>==
 imap <M-\> <C-o>S
 nmap <M-\> S
 
+
+
+" 6/8/20  ...my macbook Z key no longer responding all the time due to overuse
+map q :q!<CR>
+map  zz
+map b zb
+map t zt
+map <C-q> :q!<CR>
+map <C-\> zz
+map <C-b> zb
+map <C-t> zt
+
 """""""""""""""""""""""""" END EMACS KEYS """""""""""""""""""""""""""
 
 
@@ -534,7 +549,7 @@ autocmd Syntax *.py *.js syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " gf looks for files in templates folder too (e.g. ma Django projecs)
 set path+=templates
 
-set guifont=Monospace\ 11
+" set guifont=Monospace\ 11
 
 set wildignore=*.pyc,*/node_modules/**,*/angular/lib/**,*.webpack.js,*/js/libs/**,*/scripts/craigslist_samples/**
 

@@ -1,9 +1,15 @@
+app.css
+css-style-guide.css
+old.css
 *node_modules*
 dist*
 htmlcov*
+*.map
 *.svg
 ENTIRE_GIT_LOG
 tags
+*test-coverage*
 venv
 *vendors*
 *\lib\/*
+./.tox*

@@ -35,7 +35,6 @@ PS1="[\u@\H:\w]\[\033[33m\]\$(parse_git_branch)\[\033[00m $ "
 
 PATH=$PATH:/usr/local/mysql/bin:/usr/lib/postgresql/9.3/bin/:/home/dlam/jdk1.8.0_111/bin:/usr/share/elasticsearch/bin/
 
-
 export EDITOR=vi
 export SVN_EDITOR=vi
 
@@ -67,21 +66,24 @@ gitshow() { git show "$1" | vi - ;}
 gitdiff() { git diff "$1" | vi - ;}
 alias gc='git checkout'
 alias gca='git commit --amend'
-alias gd='gitdiff .'
+alias gd='git diff '
+alias gdd='gitdiff .'
 alias gdv='git diff | vi -'
 alias gdc='git diff --cached "$1"'
 alias gdcv='git diff --cached "$1" | vi -'
 alias gitlog='git log --stat'
 alias gl=gitlog
 alias gls=gitlog
+alias glse='git log --stat > ENTIRE_GIT_LOG'
+alias gm='git merge'
+alias gpr='git pull --recurse-submodules'
 alias gs='git status'
+alias gsm='git submodule'
 alias gsw='git show'
 alias ga='git add -v'
 alias gb='git branch'
 alias g='git'
 alias gitlogall='git log --branches --remotes --tags --graph --oneline --decorate'
-
-alias topmem='top -o -RSIZE'    # top sorted by memory usage
 
 # mercurial shortcuts
 hgs() { hg status ;}
@@ -91,36 +93,27 @@ hglog() { hg log | less ;}
 # could also use... `grep -r foo .`
 function findrecursive() { find . -type f -exec grep -nH $1 {} \;; }
 function findrecursivel() { find . -type f -exec grep -l $1 {} \;; }
-alias findr='findrecursive'
-alias findrl='findrecursivel'
-
-function dieallpycfiles() { find . -name "*.pyc" -exec rm -rf {} \;; }
+function dieallpycfiles() { find . -name "*.pyc" -exec rm -rf {} \;; }  # find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf 
 
 # `date` in PST always, useful if on SSH'ed on a server that's using UTC!
 function datepst { export TZ=America/Los_Angeles; date; unset TZ ;}
 
 alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
-
-alias usd='unset DJANGO_SETTINGS_MODULE;  echo "...unset DJANGO_SETTINGS_MODULE!"'
-alias td='tail -f /tmp/django.log'
-alias psrs='ps -Af | grep runserver'
-alias v='vagrant'
-alias vs='vagrant status'
-alias vu='vagrant up'
 alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
-alias psr='ps -Af | grep -i runserver'
+alias findr='findrecursive'
+alias findrl='findrecursivel'
 alias formatjson='cat $1 | python -m json.tool'
 alias sa='source activate'
-alias mr='python manage.py runserver'
-alias rs='python manage.py runserver'
 alias ms='python manage.py shell_plus'
-alias m='python manage.py'
 alias tas="tmux attach-session"
+alias tls="tmux list-sessions"
 alias fn="find -name "
+alias topmem='top -o -RSIZE'    # top sorted by memory usage
+alias usd='unset DJANGO_SETTINGS_MODULE;  echo "...unset DJANGO_SETTINGS_MODULE!"'
+
 
 # http://www.if-not-true-then-false.com/2010/linux-get-ip-address/
 function external-ip () { lynx --dump http://ipecho.net/plain; }
-
 
 
 # synclient FingerLow=15      #  touchpad pressure settings

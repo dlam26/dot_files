@@ -1,6 +1,6 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier 'super)
-
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
 
 ;(load-library "~/elisp/vtl.el")
@@ -173,6 +173,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; https://www.emacswiki.org/emacs/ColorThemes
 (require  'color-theme)
 (color-theme-initialize)
 (color-theme-jsc-dark)  ;; 12/2/2008 - "Cooper Dark" in the color scheme test
