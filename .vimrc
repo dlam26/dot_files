@@ -387,8 +387,8 @@ endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<CR>
 nmap <silent> \` :QFix<CR>
-map <F5> :execute '  NERDTreeToggle' . expand('%:p:h') <CR>
-imap <F5> <C-o>:execute '  NERDTreeToggle' . expand('%:p:h') <CR>
+map <F5> :execute '  NERDTreeToggle ' . expand('%:p:h') <CR>
+imap <F5> <C-o>:execute '  NERDTreeToggle ' . expand('%:p:h') <CR>
 map <F6> :call EasyVimGrep() <CR>
 map <F7> :call ToggleCursorColumn()<CR>
 map <F8> :call EasyVimGrep('.py')<CR>
