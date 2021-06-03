@@ -98,6 +98,8 @@ function dieallpycfiles() { find . -name "*.pyc" -exec rm -rf {} \;; }  # find .
 # `date` in PST always, useful if on SSH'ed on a server that's using UTC!
 function datepst { export TZ=America/Los_Angeles; date; unset TZ ;}
 
+latest() { local file latest; for file in "${1:-.}"/*; do [[ $file -nt $latest ]] && latest=$file; done; printf '%s\n' "$latest"; } ## Usage: latest [dir]
+
 alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
 alias topcpu='top -o cpu -O +rsize -s 5 -n 30'
 alias findr='findrecursive'
