@@ -71,6 +71,7 @@ alias gdd='gitdiff .'
 alias gdv='git diff | vi -'
 alias gdc='git diff --cached "$1"'
 alias gdcv='git diff --cached "$1" | vi -'
+alias gfp='git fetch --all; git pull'
 alias gitlog='git log --stat'
 alias gl=gitlog
 alias gls=gitlog
